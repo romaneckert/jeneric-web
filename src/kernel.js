@@ -1,4 +1,4 @@
-const ModuleDefinition = require('../common/module-definition');
+const ModuleDefinition = require('./src/module-definition');
 
 class Kernel {
 
@@ -16,16 +16,16 @@ class Kernel {
     init(config) {
 
         // load core utils
-        for(let util in this._config.utils) {
+        for (let util in this._config.utils) {
             this._utils[util] = this._config.utils[util].class;
         }
 
         // merge application specific config with default config
-        if('object' === typeof config) this._utils.object.merge(this._config, config);
+        if ('object' === typeof config) this._utils.object.merge(this._config, config);
 
         // load additional utils which are in custom config
-        for(let util in this._config.utils) {
-            if('undefined' === typeof this._utils[util]) {
+        for (let util in this._config.utils) {
+            if ('undefined' === typeof this._utils[util]) {
                 this._utils[util] = this._config.utils[util].class;
             }
         }
@@ -33,12 +33,12 @@ class Kernel {
         this._instantiateHandler(this._handler, this._config.handler);
 
         // make entities application wide available
-        for(let entityName in this._config.entities) {
+        for (let entityName in this._config.entities) {
             this._entities[entityName] = this._config.entities[entityName].class;
         }
 
         // instantiate services
-        for(let serviceName in this._config.services) {
+        for (let serviceName in this._config.services) {
 
             let service = this._config.services[serviceName];
             this._services[serviceName] = new service.class(service.config);
@@ -50,9 +50,9 @@ class Kernel {
 
     _instantiateHandler(handler, handlerConfig) {
 
-        for(let conf in handlerConfig) {
+        for (let conf in handlerConfig) {
 
-            if('function' === typeof handlerConfig[conf].class) {
+            if ('function' === typeof handlerConfig[conf].class) {
                 handler[conf] = new handlerConfig[conf].class();
             } else {
                 handler[conf] = {};
@@ -85,7 +85,7 @@ class Kernel {
 
     get ready() {
 
-        for(let serviceName in this.services) {
+        for (let serviceName in this.services) {
 
             let service = this.services[serviceName];
 
@@ -100,7 +100,7 @@ class Kernel {
         let path = [];
         this._getConfigPathByAttribute(this._config, 'class', clazz, path);
 
-        if(path.length > 1) {
+        if (path.length > 1) {
             // removes first path segement like service or handler
             path.shift();
             return path.join('/');
@@ -111,13 +111,13 @@ class Kernel {
 
     _getConfigPathByAttribute(obj, searchAttr, searchValue, path) {
 
-        for(let attribute in obj) {
+        for (let attribute in obj) {
 
-            if(attribute === searchAttr && obj[attribute] === searchValue) {
+            if (attribute === searchAttr && obj[attribute] === searchValue) {
                 return true;
-            }  else {
-                if('object' === typeof obj[attribute]) {
-                    if(this._getConfigPathByAttribute(obj[attribute], searchAttr, searchValue, path)) {
+            } else {
+                if ('object' === typeof obj[attribute]) {
+                    if (this._getConfigPathByAttribute(obj[attribute], searchAttr, searchValue, path)) {
                         path.unshift(attribute);
                         return true;
                     }

@@ -24,11 +24,11 @@ class ModuleDefinition {
     toString() {
         let parts = [];
 
-        if('string' === typeof this._type) {
+        if ('string' === typeof this._type) {
             parts.push(this._type);
         }
 
-        if('string' === typeof this._name) {
+        if ('string' === typeof this._name) {
             parts.push(this._name);
         }
 

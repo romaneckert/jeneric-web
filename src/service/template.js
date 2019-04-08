@@ -7,7 +7,7 @@ class TemplateService extends AbstractService {
 
         this._templates = {};
 
-        $('template').each(function(t, template) {
+        $('template').each(function (t, template) {
 
             let $template = $(template);
             let id = $template.attr('id');
@@ -18,25 +18,25 @@ class TemplateService extends AbstractService {
 
     getTemplate(id, entity) {
 
-        if('undefined' === typeof this._templates[id]) throw new Error('template with id ' + id + ' does not exist.');
+        if ('undefined' === typeof this._templates[id]) throw new Error('template with id ' + id + ' does not exist.');
 
         let $template = $(this._templates[id].html());
 
-        $template.find('[data-attribute]').each(function(i, elem) {
+        $template.find('[data-attribute]').each(function (i, elem) {
 
             let $elem = $(elem);
             let attributeName = $elem.attr('data-attribute');
             let attributeMapping = $elem.attr('data-attribute-mapping');
 
-            if(entity[attributeName]) {
+            if (entity[attributeName]) {
 
                 let value = entity[attributeName];
 
-                if('string' === typeof attributeMapping && attributeMapping.length > 0) {
+                if ('string' === typeof attributeMapping && attributeMapping.length > 0) {
 
                     let defaultAttribute = $elem.attr(attributeMapping);
 
-                    if('href' === attributeMapping && 'string' === typeof defaultAttribute && -1 !== defaultAttribute.indexOf('#')) {
+                    if ('href' === attributeMapping && 'string' === typeof defaultAttribute && -1 !== defaultAttribute.indexOf('#')) {
                         $elem.attr('href', value + defaultAttribute);
                     } else {
                         $elem.attr(attributeMapping, value);

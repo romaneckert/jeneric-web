@@ -1,4 +1,4 @@
-const ModuleDefinition = require('../common/module-definition');
+const ModuleDefinition = require('./module-definition');
 
 class Abstract {
 
@@ -23,35 +23,35 @@ class Abstract {
 
         // builing layer between real logger service to set the module definition to logger
         return {
-            emergency : function(message, meta, stack) {
+            emergency: function (message, meta, stack) {
                 this.services.logger.log(message, meta, this.moduleDefinition, stack, 0);
             }.bind(this),
 
-            alert : function(message, meta, stack) {
+            alert: function (message, meta, stack) {
                 this.services.logger.log(message, meta, this.moduleDefinition, stack, 1);
             }.bind(this),
 
-            critical : function(message, meta, stack) {
+            critical: function (message, meta, stack) {
                 this.services.logger.log(message, meta, this.moduleDefinition, stack, 2);
             }.bind(this),
 
-            error : function(message, meta, stack) {
+            error: function (message, meta, stack) {
                 this.services.logger.log(message, meta, this.moduleDefinition, stack, 3);
             }.bind(this),
 
-            warning : function(message, meta, stack) {
+            warning: function (message, meta, stack) {
                 this.services.logger.log(message, meta, this.moduleDefinition, stack, 4);
             }.bind(this),
 
-            notice : function(message, meta, stack) {
+            notice: function (message, meta, stack) {
                 this.services.logger.log(message, meta, this.moduleDefinition, stack, 5);
             }.bind(this),
 
-            info : function(message, meta, stack) {
+            info: function (message, meta, stack) {
                 this.services.logger.log(message, meta, this.moduleDefinition, stack, 6);
             }.bind(this),
 
-            debug : function(message, meta, stack) {
+            debug: function (message, meta, stack) {
                 this.services.logger.log(message, meta, this.moduleDefinition, stack, 7);
             }.bind(this)
         };

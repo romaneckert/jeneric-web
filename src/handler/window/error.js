@@ -6,7 +6,7 @@ class Error extends AbstractHandler {
     }
 
     handle(event) {
-        if(
+        if (
             'object' === typeof event &&
             null !== event &&
             'object' === typeof event.originalEvent &&
@@ -22,7 +22,7 @@ class Error extends AbstractHandler {
             try {
                 this.logger.critical(message, error, stack);
                 event.preventDefault();
-            } catch(error) {
+            } catch (error) {
                 console.log(error);
             }
         }

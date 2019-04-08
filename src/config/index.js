@@ -1,41 +1,41 @@
 module.exports = {
-    entities : {
-        log : {
-            class : require('../../common/entity/log')
+    entities: {
+        log: {
+            class: require('../entity/log')
         }
     },
-    handler : {
-        socket : {
-            message : {
-                class : require('../handler/socket/message')
+    handler: {
+        socket: {
+            message: {
+                class: require('../handler/socket/message')
             }
         },
-        window : {
-            error : {
-                class : require('../handler/window/error')
+        window: {
+            error: {
+                class: require('../handler/window/error')
             }
         }
     },
-    services : {
-        logger : {
-            class : require('../service/logger')
+    services: {
+        logger: {
+            class: require('../service/logger')
         },
-        socket : {
-            class : require('../service/socket')
+        socket: {
+            class: require('../service/socket')
         },
-        template : {
-            class : require('../service/template')
+        template: {
+            class: require('../service/template')
         }
     },
-    utils : {
-        error : {
-            class : require('../../common/util/error')
+    utils: {
+        error: {
+            class: require('../util/error')
         },
-        object : {
-            class : require('../../common/util/object')
+        object: {
+            class: require('../util/object')
         },
-        string : {
-            class : require('../../common/util/string')
+        string: {
+            class: require('../util/string')
         }
     }
 };
