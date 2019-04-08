@@ -1,0 +1,9 @@
+{
+  "name": "@jeneric/web",
+  "version": "1.0.0",
+  "description": "jeneric web",
+  "main": "index.js",
+  "author": "Roman Eckert",
+  "license": "MIT",
+  "repository": "https://github.com/romaneckert/jeneric-web"
+}
