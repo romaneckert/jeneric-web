@@ -5,11 +5,6 @@ module.exports = {
         }
     },
     handler: {
-        socket: {
-            message: {
-                class: require('../handler/socket/message')
-            }
-        },
         window: {
             error: {
                 class: require('../handler/window/error')
@@ -19,9 +14,6 @@ module.exports = {
     services: {
         logger: {
             class: require('../service/logger')
-        },
-        socket: {
-            class: require('../service/socket')
         },
         template: {
             class: require('../service/template')
